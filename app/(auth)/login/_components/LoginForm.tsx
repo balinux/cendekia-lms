@@ -32,7 +32,7 @@ export default function LoginForm() {
         <Card>
         <CardHeader>
             <CardTitle className="text-xl">Welcome back!</CardTitle>
-            <CardDescription>Login with GitHub email account</CardDescription>
+            <CardDescription>Login with GitHub or email account</CardDescription>
         </CardHeader>
         <CardContent className=" flex flex-col gap-4">
             <Button className="w-full" variant="outline" onClick={signInWithGithub} disabled={isGithubPending}> 
