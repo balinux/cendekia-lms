@@ -32,10 +32,14 @@ import {
 import { authClient } from "@/lib/auth-client"
 import Link from "next/link"
 import { HomeIcon, Tv2 } from "lucide-react"
+import { useSignOut } from "@/hooks/use-signout"
 
 export function NavUser() {
   // get user session client
   const { data: session, isPending } = authClient.useSession();
+
+  // use hook signout
+  const handleSignOut = useSignOut(); 
 
   if (isPending) {
     return null;
@@ -110,7 +114,7 @@ export function NavUser() {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={handleSignOut}>
               <IconLogout />
               Log out
             </DropdownMenuItem>
