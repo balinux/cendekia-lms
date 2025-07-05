@@ -39,7 +39,7 @@ export function NavUser() {
   const { data: session, isPending } = authClient.useSession();
 
   // use hook signout
-  const handleSignOut = useSignOut(); 
+  const handleSignOut = useSignOut();
 
   if (isPending) {
     return null;
@@ -61,7 +61,7 @@ export function NavUser() {
                 <AvatarFallback className="rounded-lg">{session?.user.name && session.user.name.length > 0
                   ? session?.user.name?.charAt(0).toUpperCase()
                   : session?.user.email?.charAt(0).toUpperCase()}
-                  </AvatarFallback>
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">{session?.user.name && session.user.name.length > 0 ? session?.user.name : session?.user.email.split("@")[0]}</span>
@@ -82,7 +82,9 @@ export function NavUser() {
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={session?.user.image || `https://avatar.vercel.sh/${session?.user.name}`} alt={session?.user.name || ""} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  <AvatarFallback className="rounded-lg">{session?.user.name && session.user.name.length > 0
+                    ? session?.user.name?.charAt(0).toUpperCase()
+                    : session?.user.email?.charAt(0).toUpperCase()}</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">{session?.user.name && session.user.name.length > 0 ? session?.user.name : session?.user.email.split("@")[0]}</span>
