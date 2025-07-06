@@ -13,6 +13,7 @@ import { PlusIcon, SparkleIcon } from "lucide-react";
 import slugify from "slugify";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { RichTextEditor } from "@/components/rich-text-editor/editor";
 
 export default function CreateCoursePage() {
 
@@ -129,7 +130,8 @@ export default function CreateCoursePage() {
                                     <FormItem>
                                         <FormLabel>Description</FormLabel>
                                         <FormControl>
-                                            <Textarea className="min-h-[120px]" {...field} placeholder="Enter course description" />
+                                            <RichTextEditor field={field}/>
+                                            {/* <Textarea className="min-h-[120px]" {...field} placeholder="Enter course description" /> */}
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
