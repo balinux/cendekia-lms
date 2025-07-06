@@ -49,8 +49,10 @@ export default function Navbar() {
                         {isPending ? null : session ? (
                             <>
                                 <UserDropdown
-                                    name={session.user.name}
-                                    email={session.user.email}
+                                    name={session?.user.name && session.user.name.length > 0
+                                        ? session.user.name
+                                        : session.user.email}
+                                    email={session.user.email}  
                                     image={session.user.image || ""} />
                             </>
 
