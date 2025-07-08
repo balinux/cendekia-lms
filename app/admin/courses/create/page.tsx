@@ -14,6 +14,8 @@ import slugify from "slugify";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RichTextEditor } from "@/components/rich-text-editor/editor";
+import FileUploader from "@/components/file-uploader/uploader";
+import Uploader from "@/components/file-uploader/uploader";
 
 export default function CreateCoursePage() {
 
@@ -146,7 +148,8 @@ export default function CreateCoursePage() {
                                     <FormItem>
                                         <FormLabel>Thumbnail</FormLabel>
                                         <FormControl>
-                                            <Input {...field} placeholder="Enter course thumbnail" />
+                                            <Uploader />
+                                            {/* <Input {...field} placeholder="Enter course thumbnail" /> */}
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -214,7 +217,7 @@ export default function CreateCoursePage() {
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel >Duration</FormLabel>
-                                            <Input type="number" {...field} />
+                                            <Input type="number" {...field} onChange={event => field.onChange(+event.target.value)} />
                                             <FormMessage />
                                         </FormItem>
                                     )}
@@ -227,7 +230,7 @@ export default function CreateCoursePage() {
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel >Price (in IDR) </FormLabel>
-                                            <Input type="number" {...field} />
+                                            <Input type="number" {...field} onChange={event => field.onChange(+event.target.value)} />
                                             <FormMessage />
                                         </FormItem>
                                     )}

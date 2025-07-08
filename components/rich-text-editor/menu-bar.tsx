@@ -19,7 +19,7 @@ export default function MenuBar({ editor }: iAppProps) {
             <TooltipProvider>
                 <div className="flex flex-wrap gap-1">
                     <Tooltip>
-                        <TooltipTrigger>
+                        <TooltipTrigger asChild>
                             <Toggle
                                 size="sm"
                                 pressed={editor.isActive("bold")}
@@ -38,7 +38,7 @@ export default function MenuBar({ editor }: iAppProps) {
 
                     {/* italic */}
                     <Tooltip>
-                        <TooltipTrigger>
+                        <TooltipTrigger asChild>
                             <Toggle
                                 size="sm"
                                 pressed={editor.isActive("italic")}
@@ -57,7 +57,7 @@ export default function MenuBar({ editor }: iAppProps) {
 
                     {/* strike */}
                     <Tooltip>
-                        <TooltipTrigger>
+                        <TooltipTrigger asChild>
                             <Toggle
                                 size="sm"
                                 pressed={editor.isActive("strike")}
@@ -76,7 +76,7 @@ export default function MenuBar({ editor }: iAppProps) {
 
                     {/* heading 1 */}
                     <Tooltip>
-                        <TooltipTrigger>
+                        <TooltipTrigger asChild>
                             <Toggle
                                 size="sm"
                                 pressed={editor.isActive("heading", { level: 1 })}
@@ -95,7 +95,7 @@ export default function MenuBar({ editor }: iAppProps) {
 
                     {/* heading 2 */}
                     <Tooltip>
-                        <TooltipTrigger>
+                        <TooltipTrigger asChild>
                             <Toggle
                                 size="sm"
                                 pressed={editor.isActive("heading", { level: 2 })}
@@ -114,7 +114,7 @@ export default function MenuBar({ editor }: iAppProps) {
 
                     {/* heading 3 */}
                     <Tooltip>
-                        <TooltipTrigger>
+                        <TooltipTrigger asChild>
                             <Toggle
                                 size="sm"
                                 pressed={editor.isActive("heading", { level: 3 })}
@@ -133,7 +133,7 @@ export default function MenuBar({ editor }: iAppProps) {
 
                     {/* bullet list */}
                     <Tooltip>
-                        <TooltipTrigger>
+                        <TooltipTrigger asChild>
                             <Toggle
                                 size="sm"
                                 pressed={editor.isActive("bulletList")}
@@ -152,7 +152,7 @@ export default function MenuBar({ editor }: iAppProps) {
 
                     {/* ordered list */}
                     <Tooltip>
-                        <TooltipTrigger>
+                        <TooltipTrigger asChild>
                             <Toggle
                                 size="sm"
                                 pressed={editor.isActive("orderedList")}
@@ -173,7 +173,7 @@ export default function MenuBar({ editor }: iAppProps) {
                     <div className="flex flex-wrap gap-1">
                         {/* text align */}
                         <Tooltip>
-                            <TooltipTrigger>
+                            <TooltipTrigger asChild>
                                 <Toggle
                                     size="sm"
                                     pressed={editor.isActive({textAlign: "left"})}
@@ -192,7 +192,7 @@ export default function MenuBar({ editor }: iAppProps) {
 
                         {/* align center */}
                         <Tooltip>
-                            <TooltipTrigger>
+                            <TooltipTrigger asChild>
                                 <Toggle
                                     size="sm"
                                     pressed={editor.isActive({textAlign: "center"})}
@@ -211,7 +211,7 @@ export default function MenuBar({ editor }: iAppProps) {
 
                         {/* align right */}
                         <Tooltip>
-                            <TooltipTrigger>
+                            <TooltipTrigger asChild>
                                 <Toggle
                                     size="sm"
                                     pressed={editor.isActive({textAlign: "right"})}
@@ -234,7 +234,7 @@ export default function MenuBar({ editor }: iAppProps) {
                     <div className="flex flex-wrap gap-1">
                         {/* undo */}
                         <Tooltip>
-                            <TooltipTrigger>
+                            <TooltipTrigger asChild>
                                 <Toggle
                                     size="sm"
                                     // pressed={editor.can().undo()}
@@ -254,7 +254,7 @@ export default function MenuBar({ editor }: iAppProps) {
 
                         {/* redo */}
                         <Tooltip>
-                            <TooltipTrigger>
+                            <TooltipTrigger asChild>
                                 <Toggle
                                     size="sm"
                                     // pressed={editor.can().redo()}
