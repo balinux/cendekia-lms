@@ -148,7 +148,7 @@ export default function CreateCoursePage() {
                                     <FormItem>
                                         <FormLabel>Thumbnail</FormLabel>
                                         <FormControl>
-                                            <Uploader/>
+                                            <Uploader />
                                             {/* <Input {...field} placeholder="Enter course thumbnail" /> */}
                                         </FormControl>
                                         <FormMessage />
@@ -217,7 +217,7 @@ export default function CreateCoursePage() {
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel >Duration</FormLabel>
-                                            <Input type="number" {...field} />
+                                            <Input type="number" {...field} onChange={event => field.onChange(+event.target.value)} />
                                             <FormMessage />
                                         </FormItem>
                                     )}
@@ -230,7 +230,7 @@ export default function CreateCoursePage() {
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel >Price (in IDR) </FormLabel>
-                                            <Input type="number" {...field} />
+                                            <Input type="number" {...field} onChange={event => field.onChange(+event.target.value)} />
                                             <FormMessage />
                                         </FormItem>
                                     )}

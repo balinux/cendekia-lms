@@ -41,11 +41,11 @@ export function NavUser() {
   // use hook signout
   const handleSignOut = useSignOut();
 
+  const { isMobile } = useSidebar()
+
   if (isPending) {
     return null;
   }
-
-  const { isMobile } = useSidebar()
 
   return (
     <SidebarMenu>
