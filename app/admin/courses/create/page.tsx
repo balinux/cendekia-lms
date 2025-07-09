@@ -9,15 +9,24 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { courseCategories, courseLevels, courseSchema, CourseSchemaType, courseStatus } from "@/lib/zodSchemas"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { PlusIcon, SparkleIcon } from "lucide-react";
+import { Loader2Icon, PlusIcon, SparkleIcon } from "lucide-react";
 import slugify from "slugify";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RichTextEditor } from "@/components/rich-text-editor/editor";
 import FileUploader from "@/components/file-uploader/uploader";
 import Uploader from "@/components/file-uploader/uploader";
+import { useTransition } from "react";
+import { tryCatch } from "@/hooks/try-catch";
+import { CreateCourse } from "./actions";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function CreateCoursePage() {
+
+    // add transition
+    const [isPending, startTransition] = useTransition();
+    const router = useRouter()
 
     // 1. Define your form.
     const form = useForm<CourseSchemaType>({
@@ -41,7 +50,23 @@ export default function CreateCoursePage() {
     function onSubmit(values: CourseSchemaType) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
-        console.log(values)
+        // console.log(values)
+        startTransition(async () => {
+            const { data: results, error } = await tryCatch(CreateCourse(values))
+            if (error) {
+                toast.error(error.message)
+            }
+
+            if (results?.status === "success") {
+                toast.success(results.message)
+                form.reset()
+                router.push("/admin/courses")
+            } else if (results?.status === "error") {
+                toast.error(results.message)
+            }
+
+        })
+
     }
 
     return (
@@ -132,7 +157,7 @@ export default function CreateCoursePage() {
                                     <FormItem>
                                         <FormLabel>Description</FormLabel>
                                         <FormControl>
-                                            <RichTextEditor field={field}/>
+                                            <RichTextEditor field={field} />
                                             {/* <Textarea className="min-h-[120px]" {...field} placeholder="Enter course description" /> */}
                                         </FormControl>
                                         <FormMessage />
@@ -264,7 +289,19 @@ export default function CreateCoursePage() {
                             />
 
                             {/* submit button */}
-                            <Button type="submit">Create Course <PlusIcon className="ml-1" size={16} /></Button>
+                            <Button
+                                type="submit"
+                                disabled={isPending}>
+                                {isPending
+                                    ? <>
+                                        Creating Course...
+                                        <Loader2Icon className="ml-1 h-4 w-4 animate-spin" />
+                                    </>
+                                    : <> 
+                                        Create Course
+                                        <PlusIcon className="ml-1" size={16} />
+                                    </>}
+                            </Button>
                         </form>
                     </Form>
 
