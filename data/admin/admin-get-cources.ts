@@ -17,7 +17,8 @@ export async function adminGetCources() {
             level:true,
             status:true,
             price:true,
-            fileKey:true
+            fileKey:true,
+            slug:true
         }
     })
 
