@@ -13,7 +13,7 @@ export default async function CoursesPage() {
                 Create Course
             </Link>
         </div>
-        <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-7">
             {courses.map((course) => (
                 <AdminCourseCard key={course.id} course={course} />
             ))}
