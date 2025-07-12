@@ -5,6 +5,7 @@ import AdminGetCourse from "@/data/admin/admin-get-course"
 import { requireAdmin } from "@/data/admin/require-admin"
 import { TabsContent } from "@radix-ui/react-tabs"
 import EditCourseForm from "./_components/edit-course-form"
+import CourseStructure from "./_components/course-structure"
 
 type ParamsType = Promise<{courseid: string}>
     
@@ -31,6 +32,17 @@ export default async function EditCoursePage({params}: {params: ParamsType}) {
                         </CardHeader>
                         <CardContent>
                             <EditCourseForm data={course} />
+                        </CardContent>
+                        </Card>    
+                </TabsContent>
+                <TabsContent value="course-structure">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Course Structure</CardTitle>
+                            <CardDescription>Fill the form below to edit the course</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <CourseStructure course={course} />
                         </CardContent>
                         </Card>    
                 </TabsContent>
