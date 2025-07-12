@@ -297,7 +297,7 @@ export default function CreateCoursePage() {
                                         Creating Course...
                                         <Loader2Icon className="ml-1 h-4 w-4 animate-spin" />
                                     </>
-                                    : <> 
+                                    : <>
                                         Create Course
                                         <PlusIcon className="ml-1" size={16} />
                                     </>}
