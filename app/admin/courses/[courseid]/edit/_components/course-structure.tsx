@@ -43,7 +43,7 @@ export default function CourseStructure({ course }: iAppProps) {
 
     const [items, setItems] = useState(initialItems);
 
-    function handleDragEnd(event) {
+    function handleDragEnd(event: { active: any; over: any; }) {
         const { active, over } = event;
 
         if (active.id !== over.id) {
