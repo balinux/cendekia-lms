@@ -37,7 +37,7 @@ export default function Uploader({ value, onChange }: iAppProps) {
         error: false,
         fileType: "image",
         key: value,
-        objectURL: fileUrl,
+        objectURL: value ? fileUrl : undefined,
     })
 
     async function uploadFile(file: File) {
@@ -238,6 +238,7 @@ export default function Uploader({ value, onChange }: iAppProps) {
             return <RenderUploadingState progress={fileState.progress} file={fileState.file as File} />;
         }
 
+        console.log(fileState.objectURL)
         if (fileState.objectURL) {
             return <RenderUploadedState
                 previewUrl={fileState.objectURL}
