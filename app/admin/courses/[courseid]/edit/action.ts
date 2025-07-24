@@ -4,7 +4,7 @@ import { requireAdmin } from "@/data/admin/require-admin"
 import arcjet, { detectBot, fixedWindow } from "@/lib/arcjet"
 import { prisma } from "@/lib/db"
 import { ApiResponse } from "@/lib/types"
-import { courseSchema, CourseSchemaType } from "@/lib/zodSchemas"
+import { chapterSchema, ChapterSchemaType, courseSchema, CourseSchemaType } from "@/lib/zodSchemas"
 import { request } from "@arcjet/next"
 import { revalidatePath } from "next/cache"
 
@@ -85,6 +85,7 @@ export async function editCourse(data: CourseSchemaType, courseId: string): Prom
 
 
 }
+
 interface ReOrderLessonProps {
     chapterId: string,
     lessons: { id: string, position: number }[],
@@ -172,4 +173,50 @@ export async function reOrderChapter({ chapters, courseId }: ReOrderChapterProps
         }
     }
 }
+
+export async function createChapter(data: ChapterSchemaType): Promise<ApiResponse> {
+    await requireAdmin()
+    try {
+        const result = chapterSchema.safeParse(data)
+        if (!result.success) {
+            return {
+                status: "error",
+                message: "Invalid form data"
+            }
+        }
+
+        await prisma.$transaction(async(tx) => {
+            const maxPos = await tx.chapter.findFirst({
+                where:{
+                    courseId: result.data.courseId
+                },
+                select:{
+                    position:true
+                },
+                orderBy:{
+                    position:"desc"
+                }
+            })
+
+            await tx.chapter.create({
+                data:{
+                    title: result.data.title,
+                    position: maxPos?.position ? maxPos.position + 1 : 1,
+                    courseId: result.data.courseId
+                }
+            })
+        })   
+        revalidatePath(`/admin/courses/${result.data.courseId}/edit`)
+        return {
+            status: "success",
+            message: "Chapter created successfully"
+        }        
+    } catch (error) {
+        return {
+            status: "error",
+            message: "Failed to create chapter"
+        }
+    }
+}
+
 

@@ -14,6 +14,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { reOrderChapter, reOrderLesson } from "../action";
+import { NewChapterModal } from "./new-chapter-modal";
 
 interface iAppProps {
     course: AdminCourseSingularType
@@ -260,6 +261,7 @@ export default function CourseStructure({ course }: iAppProps) {
             <Card>
                 <CardHeader className="flex flex-row items-center justify-between border-b border-border">
                     <CardTitle>Chapters</CardTitle>
+                    <NewChapterModal courseId={course.id}/>
                 </CardHeader>
                 <CardContent className="space-y-8">
                     <SortableContext items={items} strategy={verticalListSortingStrategy}>

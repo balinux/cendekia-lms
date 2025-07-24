@@ -23,4 +23,12 @@ export const courseSchema = z.object({
     })
 })
 
+// schema for chapter
+export const chapterSchema = z.object({
+    title: z.string().min(3, "Title must be at least 3 characters long"),
+    courseId: z.string().uuid({ message: "Course ID must be a valid UUID" }),
+})
+
 export type CourseSchemaType = z.infer<typeof courseSchema>;
+export type ChapterSchemaType = z.infer<typeof chapterSchema>;
+
