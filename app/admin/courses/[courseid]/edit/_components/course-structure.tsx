@@ -17,6 +17,7 @@ import { reOrderChapter, reOrderLesson } from "../action";
 import { NewChapterModal } from "./new-chapter-modal";
 import { NewLessonModal } from "./new-lesson-modal";
 import DeleteLessonModal from "./delete-lesson";
+import DeleteChapterModal from "./delete-chapter";
 
 interface iAppProps {
     course: AdminCourseSingularType
@@ -290,9 +291,7 @@ export default function CourseStructure({ course }: iAppProps) {
                                                     </CollapsibleTrigger>
                                                     <span className="cursor-pointer hover:text-primary pl-2">{item.title}</span>
                                                 </div>
-                                                <Button size='icon' variant="outline" className="cursor-pointer opacity-60 hover:opacity-100" {...listeners}>
-                                                    <Trash2 className="size-4 " />
-                                                </Button>
+                                                <DeleteChapterModal courseId={course.id} chapterId={item.id}/>
                                             </div>
 
                                             {/* component collapsible */}
