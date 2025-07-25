@@ -16,6 +16,7 @@ import { toast } from "sonner";
 import { reOrderChapter, reOrderLesson } from "../action";
 import { NewChapterModal } from "./new-chapter-modal";
 import { NewLessonModal } from "./new-lesson-modal";
+import DeleteLessonModal from "./delete-lesson";
 
 interface iAppProps {
     course: AdminCourseSingularType
@@ -318,9 +319,11 @@ export default function CourseStructure({ course }: iAppProps) {
                                                                                 <span className="cursor-pointer hover:text-primary pl-2">{lesson.title}</span>
                                                                             </Link>
                                                                         </div>
-                                                                        <Button size='icon' variant="outline" className="cursor-pointer opacity-60 hover:opacity-100" {...listeners}>
-                                                                            <Trash2 className="size-4 " />
-                                                                        </Button>
+                                                                        <DeleteLessonModal 
+                                                                            lessonId={lesson.id} 
+                                                                            courseId={course.id} 
+                                                                            chapterId={item.id} 
+                                                                        />
                                                                     </div>
                                                                 )}
                                                             </SortableItem>
