@@ -19,7 +19,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { AdminLessonType } from "@/data/admin/admin-get-lesson";
+import { AdminLessonType } from "@/app/data/admin/admin-get-lesson";
 import { tryCatch } from "@/hooks/try-catch";
 import { lessonSchema, LessonSchemaType } from "@/lib/zodSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";

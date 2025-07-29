@@ -1,6 +1,6 @@
 "use server"
 
-import { requireAdmin } from "@/data/admin/require-admin"
+import { requireAdmin } from "@/app/data/admin/require-admin"
 import arcjet, { detectBot, fixedWindow } from "@/lib/arcjet"
 import { prisma } from "@/lib/db"
 import { ApiResponse } from "@/lib/types"

@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Skeleton } from "@/components/ui/skeleton";
-import { AdminGetCourcesType } from "@/data/admin/admin-get-cources";
+import { AdminGetCourcesType } from "@/app/data/admin/admin-get-cources";
 import useConstructUrl from "@/hooks/use-construct-url";
 import {
   ArrowRight,

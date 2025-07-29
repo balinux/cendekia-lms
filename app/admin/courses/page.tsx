@@ -1,5 +1,5 @@
 import { buttonVariants } from "@/components/ui/button";
-import { adminGetCources } from "@/data/admin/admin-get-cources";
+import { adminGetCources } from "@/app/data/admin/admin-get-cources";
 import Link from "next/link";
 import AdminCourseCard, {
   AdminCourseCardSkeleton,

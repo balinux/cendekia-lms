@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Collapsible, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { AdminCourseSingularType } from "@/data/admin/admin-get-course";
+import { AdminCourseSingularType } from "@/app/data/admin/admin-get-course";
 import { cn } from "@/lib/utils";
 import { DndContext, rectIntersection, useSensors, useSensor, MouseSensor, TouchSensor, KeyboardSensor, DraggableSyntheticListeners, DragEndEvent } from "@dnd-kit/core";
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, useSortable, verticalListSortingStrategy } from "@dnd-kit/sortable";

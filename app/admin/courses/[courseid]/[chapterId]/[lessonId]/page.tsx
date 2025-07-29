@@ -1,4 +1,4 @@
-import { adminGetLesson } from "@/data/admin/admin-get-lesson"
+import { adminGetLesson } from "@/app/data/admin/admin-get-lesson"
 import LessonForm from "./_components/lesson-form"
 
 type ParamsType = Promise<{ 

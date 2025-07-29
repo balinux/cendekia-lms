@@ -1,4 +1,4 @@
-import { requireAdmin } from "@/data/admin/require-admin"
+import { requireAdmin } from "@/app/data/admin/require-admin"
 import arcjet, { detectBot, fixedWindow } from "@/lib/arcjet"
 import { auth } from "@/lib/auth"
 import { env } from "@/lib/env"

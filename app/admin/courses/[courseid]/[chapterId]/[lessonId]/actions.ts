@@ -1,6 +1,6 @@
 "use server";
 
-import { requireAdmin } from "@/data/admin/require-admin";
+import { requireAdmin } from "@/app/data/admin/require-admin";
 import { prisma } from "@/lib/db";
 import { ApiResponse } from "@/lib/types";
 import { lessonSchema, LessonSchemaType } from "@/lib/zodSchemas";
