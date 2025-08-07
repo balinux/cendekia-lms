@@ -17,6 +17,7 @@ export const env = createEnv({
         AWS_REGION: z.string().min(1),
         AWS_ENDPOINT_URL_S3: z.string().url(),
         AWS_ENDPOINT_URL_IAM: z.string().url(),
+        SRIPE_SECRET_KEY: z.string().min(1),
     },
 
     client: {
