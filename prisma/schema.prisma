@@ -15,16 +15,18 @@ datasource db {
 }
 
 model User {
-  id            String    @id
-  name          String
-  email         String
-  emailVerified Boolean
-  image         String?
-  createdAt     DateTime
-  updatedAt     DateTime
-  sessions      Session[]
-  accounts      Account[]
-  courses       Course[]
+  id               String       @id
+  name             String
+  email            String
+  emailVerified    Boolean
+  image            String?
+  createdAt        DateTime
+  updatedAt        DateTime
+  sessions         Session[]
+  accounts         Account[]
+  courses          Course[]
+  enrollments      Enrollment[]
+  stripeCustomerId String?      @unique
 
   role       String?
   banned     Boolean?
@@ -99,6 +101,7 @@ model Course {
   User             User         @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId           String
   chapters         Chapter[]
+  enrollments      Enrollment[]
 
   @@map("course")
 }
@@ -142,4 +145,26 @@ model Lesson {
   chapterId    String
 
   @@map("lesson")
+}
+
+model Enrollment {
+  id String @id @default(uuid())
+
+  amount Int
+  status EnrollmentStatus @default(Pending)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@map("enrollment")
+}
+
+enum EnrollmentStatus {
+  Pending
+  Active
+  Cancelled
 }
