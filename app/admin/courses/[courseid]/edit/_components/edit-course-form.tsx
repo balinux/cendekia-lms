@@ -20,7 +20,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RichTextEditor } from "@/components/rich-text-editor/editor";
 import FileUploader from "@/components/file-uploader/uploader";
 import Uploader from "@/components/file-uploader/uploader";
-import { AdminCourseSingularType } from "@/data/admin/admin-get-course";
+import { AdminCourseSingularType } from "@/app/data/admin/admin-get-course";
 import { editCourse } from "../action"
 
 interface iAppProps {
@@ -156,7 +156,7 @@ export default function EditCourseForm({data}: iAppProps) {
                         <FormItem>
                             <FormLabel>Thumbnail</FormLabel>
                             <FormControl>
-                                <Uploader value={field.value} onChange={field.onChange} />
+                                <Uploader value={field.value} onChange={field.onChange} fileTypeAllowed="image" />
                                 {/* <Input {...field} placeholder="Enter course thumbnail" /> */}
                             </FormControl>
                             <FormMessage />

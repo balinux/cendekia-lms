@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { S3 } from "@/lib/s3-client";
 import arcjet, { detectBot, fixedWindow } from "@/lib/arcjet";
-import { requireAdmin } from "@/data/admin/require-admin";
+import { requireAdmin } from "@/app/data/admin/require-admin";
 
 export const fileUploadSchema = z.object({
     fileName: z.string().min(1, { message: "File name is required" }),

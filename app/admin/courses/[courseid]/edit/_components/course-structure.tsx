@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Collapsible, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { AdminCourseSingularType } from "@/data/admin/admin-get-course";
+import { AdminCourseSingularType } from "@/app/data/admin/admin-get-course";
 import { cn } from "@/lib/utils";
 import { DndContext, rectIntersection, useSensors, useSensor, MouseSensor, TouchSensor, KeyboardSensor, DraggableSyntheticListeners, DragEndEvent } from "@dnd-kit/core";
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, useSortable, verticalListSortingStrategy } from "@dnd-kit/sortable";
@@ -14,6 +14,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { reOrderChapter, reOrderLesson } from "../action";
+import { NewChapterModal } from "./new-chapter-modal";
+import { NewLessonModal } from "./new-lesson-modal";
+import DeleteLessonModal from "./delete-lesson";
+import DeleteChapterModal from "./delete-chapter";
 
 interface iAppProps {
     course: AdminCourseSingularType
@@ -260,6 +264,7 @@ export default function CourseStructure({ course }: iAppProps) {
             <Card>
                 <CardHeader className="flex flex-row items-center justify-between border-b border-border">
                     <CardTitle>Chapters</CardTitle>
+                    <NewChapterModal courseId={course.id}/>
                 </CardHeader>
                 <CardContent className="space-y-8">
                     <SortableContext items={items} strategy={verticalListSortingStrategy}>
@@ -286,9 +291,7 @@ export default function CourseStructure({ course }: iAppProps) {
                                                     </CollapsibleTrigger>
                                                     <span className="cursor-pointer hover:text-primary pl-2">{item.title}</span>
                                                 </div>
-                                                <Button size='icon' variant="outline" className="cursor-pointer opacity-60 hover:opacity-100" {...listeners}>
-                                                    <Trash2 className="size-4 " />
-                                                </Button>
+                                                <DeleteChapterModal courseId={course.id} chapterId={item.id}/>
                                             </div>
 
                                             {/* component collapsible */}
@@ -315,9 +318,11 @@ export default function CourseStructure({ course }: iAppProps) {
                                                                                 <span className="cursor-pointer hover:text-primary pl-2">{lesson.title}</span>
                                                                             </Link>
                                                                         </div>
-                                                                        <Button size='icon' variant="outline" className="cursor-pointer opacity-60 hover:opacity-100" {...listeners}>
-                                                                            <Trash2 className="size-4 " />
-                                                                        </Button>
+                                                                        <DeleteLessonModal 
+                                                                            lessonId={lesson.id} 
+                                                                            courseId={course.id} 
+                                                                            chapterId={item.id} 
+                                                                        />
                                                                     </div>
                                                                 )}
                                                             </SortableItem>
@@ -325,7 +330,8 @@ export default function CourseStructure({ course }: iAppProps) {
                                                     </SortableContext>
                                                     {/* button new lesson */}
                                                     <div className="p-2">
-                                                        <Button variant="outline" className="w-full hover:bg-primary hover:text-primary" ><PlusIcon className="size-4" /> New Lesson</Button>
+                                                        <NewLessonModal courseId={course.id} chapterId={item.id}/>
+                                                        {/* <Button variant="outline" className="w-full hover:bg-primary hover:text-primary" ><PlusIcon className="size-4" /> New Lesson</Button> */}
                                                     </div>
                                                 </div>
                                             </CollapsibleContent>

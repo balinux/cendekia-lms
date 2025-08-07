@@ -11,6 +11,7 @@ interface RenderUploadedStateProps {
     previewUrl: string;
     isDeleting: boolean;
     handleRemoveFile: () => void;
+    fileType: "image" | "video"
 }
 
 interface RenderUploadingStateProps {
@@ -51,19 +52,26 @@ export function RenderErrorState({ isDragActive }: RenderEmptyStateProps) {
     )
 }
 
-export function RenderUploadedState({ previewUrl, isDeleting, handleRemoveFile }: RenderUploadedStateProps) {
+
+// interface
+export function RenderUploadedState({ previewUrl, isDeleting, handleRemoveFile, fileType }: RenderUploadedStateProps) {
     return (
-        <div>
-            <Image src={previewUrl} alt="uploaded file" fill className="object-contain p-2 " />
-            <Button 
-            variant="destructive" 
-            size="icon" 
-            className={cn(
-                "absolute top-4 right-4",
-                isDeleting ? "hidden" : ""
-            )} 
-            onClick={handleRemoveFile}
-            disabled={isDeleting}
+        <div className="relative group w-full h-full flex items-center justify-center">
+            {fileType === "video" ? (
+                <video src={previewUrl} controls className="rounded-md w-full h-full" />
+            ) : (
+                <Image src={previewUrl} alt="uploaded file" fill className="object-contain p-2 " />
+
+            )}
+            <Button
+                variant="destructive"
+                size="icon"
+                className={cn(
+                    "absolute top-4 right-4",
+                    isDeleting ? "hidden" : ""
+                )}
+                onClick={handleRemoveFile}
+                disabled={isDeleting}
             >
                 {isDeleting ? <Loader2Icon className="size-4 animate-spin" /> : <XIcon className="size-4" />}
 
