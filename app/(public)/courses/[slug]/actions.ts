@@ -10,7 +10,7 @@ import { ApiResponse } from "@/lib/types";
 interface EnrollCourseProps {
     courseId: string;
 }
-export async function enrollCourse({ courseId }: EnrollCourseProps): Promise<ApiResponse> {
+export async function enrollCourseAction({ courseId }: EnrollCourseProps): Promise<ApiResponse> {
     const user = await requireUser();
     try {
         const course = await prisma.course.findUnique({

@@ -20,6 +20,7 @@ import {
 } from "@tabler/icons-react";
 import { CheckIcon } from "lucide-react";
 import Image from "next/image";
+import { enrollCourseAction } from "./actions";
 
 type Params = Promise<{ slug: string }>;
 export default async function SlugPage({ params }: { params: Params }) {
@@ -262,9 +263,14 @@ export default async function SlugPage({ params }: { params: Params }) {
                 </ul>
               </div>
 
-              <Button className="w-full">
-                Enroll Now
-              </Button>
+              <form action={async () => {
+                "use server";
+                await enrollCourseAction({ courseId: course.id });
+              }}>
+                <Button className="w-full">
+                  Enroll Now
+                </Button>
+              </form>
 
               <p className="mt-4 text-center text-xs text-muted-foreground">
                 30-Day Money-Back Guarantee
