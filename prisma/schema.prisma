@@ -160,6 +160,8 @@ model Enrollment {
   courseId  String
   course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
+  @@unique([userId, courseId])
+
   @@map("enrollment")
 }
 
