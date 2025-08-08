@@ -1,7 +1,6 @@
 import { getCourse } from "@/app/data/course/get-course";
 import { RenderDescription } from "@/components/rich-text-editor/render-description";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Collapsible,
@@ -20,11 +19,18 @@ import {
 } from "@tabler/icons-react";
 import { CheckIcon } from "lucide-react";
 import Image from "next/image";
+import checkIfCourseBoughtByUser from "@/app/data/user/user-is-enrolled";
+import Link from "next/link";
+import EnrollmentButton from "./_components/enrollment-button";
 
 type Params = Promise<{ slug: string }>;
 export default async function SlugPage({ params }: { params: Params }) {
   const { slug } = await params;
   const course = await getCourse(slug);
+
+  // check course is bought by user
+  const isEnrolled = await checkIfCourseBoughtByUser({ courseId: course.id });
+
   return (
     <div className="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-8">
       <div className=" max-w-full order-1 lg:col-span-2 flex-2/3">
@@ -262,9 +268,11 @@ export default async function SlugPage({ params }: { params: Params }) {
                 </ul>
               </div>
 
-              <Button className="w-full">
-                Enroll Now
-              </Button>
+              {isEnrolled ? (
+                <Link href={`/dashboard/courses/${course.slug}`} className="w-full">Whatch Course</Link>
+              ) : (
+                <EnrollmentButton courseId={course.id} />
+              )}
 
               <p className="mt-4 text-center text-xs text-muted-foreground">
                 30-Day Money-Back Guarantee
