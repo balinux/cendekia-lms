@@ -1,4 +1,4 @@
-'server-only'
+import "server-only"
 
 import { prisma } from "@/lib/db";
 import { requireAdmin } from "./require-admin"
