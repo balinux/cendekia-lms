@@ -7,6 +7,7 @@ import { CourseSchemaType } from "@/lib/zodSchemas";
 import { courseSchema } from "@/lib/zodSchemas";
 import arcjet, { detectBot, fixedWindow } from "@/lib/arcjet";
 import { request } from "@arcjet/next";
+import { stripe } from "@/lib/stripe";
 
 const aj = arcjet
   .withRule(
@@ -74,11 +75,22 @@ export async function CreateCourse(
       };
     }
 
+    // create stripe price id
+    const data = await stripe.products.create({
+        name: validatedValues.data.title,
+        description: validatedValues.data.description,
+        default_price_data:{
+          currency: "usd",
+          unit_amount: validatedValues.data.price * 100,
+        },
+    })
+
     // create course
     await prisma.course.create({
       data: {
         ...validatedValues.data,
         userId: session?.user.id as string,
+        stripePriceId: data.default_price as string,
       },
     });
 
