@@ -1,8 +1,6 @@
 import "server-only";
 
-import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
-import { headers } from "next/headers";
 import { requireUser } from "./require-user";
 
 export default async function getEnrolledCourses() {

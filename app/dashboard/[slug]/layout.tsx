@@ -1,4 +1,3 @@
-import { getCourse } from "@/app/data/course/get-course";
 import CourseSidebar from "../_components/course-sidebar";
 import getCourseSidebar from "@/app/data/course/get-course-sidebar";
 

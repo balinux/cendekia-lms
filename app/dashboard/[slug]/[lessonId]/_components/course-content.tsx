@@ -7,7 +7,7 @@ import { tryCatch } from "@/hooks/try-catch";
 import useConstructUrl from "@/hooks/use-construct-url";
 import { BookIcon, CheckCircle, Loader2 } from "lucide-react";
 import { useTransition } from "react";
-import { updateLessonProgress } from "../actios";
+import { updateLessonProgress } from "../actions";
 import { toast } from "sonner";
 import { useConfetti } from "@/hooks/use-confetti";
 

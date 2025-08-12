@@ -15,10 +15,10 @@ import {
 } from "@/components/ui/input-otp";
 import { authClient } from "@/lib/auth-client";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useTransition } from "react";
+import { Suspense, useState, useTransition } from "react";
 import { toast } from "sonner";
 
-export default function VerifyRequest() {
+function VerifyRequestContent() {
   // handle otp state
   const [otp, setOtp] = useState("");
 
@@ -94,3 +94,10 @@ export default function VerifyRequest() {
   );
 }
 
+export default function VerifyRequest() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <VerifyRequestContent />
+    </Suspense>
+  )
+}

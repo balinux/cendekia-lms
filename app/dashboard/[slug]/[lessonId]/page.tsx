@@ -16,7 +16,7 @@ return(
     </Suspense>
 )}
 
-export async function LessonContentLoader({ lessonId }: { lessonId: string }) {
+async function LessonContentLoader({ lessonId }: { lessonId: string }) {
     const data = await getLessonContent(lessonId)
     return <CourseContent lesson={data} />
 }

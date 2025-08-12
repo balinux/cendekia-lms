@@ -39,7 +39,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { RichTextEditor } from "@/components/rich-text-editor/editor";
-import FileUploader from "@/components/file-uploader/uploader";
 import Uploader from "@/components/file-uploader/uploader";
 import { useTransition } from "react";
 import { tryCatch } from "@/hooks/try-catch";

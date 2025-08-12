@@ -37,6 +37,7 @@ export async function updateLessonProgress({lessonId, slug}: UpdateLessonProgres
             status: "success",
             message: "Lesson progress updated successfully"
         }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return {
             status: "error",

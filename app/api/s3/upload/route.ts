@@ -1,19 +1,14 @@
 import { env } from "@/lib/env";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { NextResponse } from "next/server";
-import z from "zod";
 import { v4 as uuidv4 } from "uuid";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { S3 } from "@/lib/s3-client";
 import arcjet, { detectBot, fixedWindow } from "@/lib/arcjet";
 import { requireAdmin } from "@/app/data/admin/require-admin";
+import { fileUploadSchema } from "@/lib/zodSchemas";
 
-export const fileUploadSchema = z.object({
-    fileName: z.string().min(1, { message: "File name is required" }),
-    fileType: z.string().min(1, { message: "File type is required" }),
-    size: z.number().min(1, { message: "File size is required" }),
-    isImage: z.boolean()
-})
+
 
 const aj = arcjet.withRule(
     detectBot({
@@ -48,6 +43,7 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: result.error.errors[0].message }, { status: 400 })
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { fileName, fileType, size, isImage } = result.data;
 
         // generate key
@@ -69,6 +65,7 @@ export async function POST(req: Request) {
             presignedUrl,
             fileKey: uniqueKey
         })
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return NextResponse.json({ error: "Internal server error" }, { status: 500 })
     }

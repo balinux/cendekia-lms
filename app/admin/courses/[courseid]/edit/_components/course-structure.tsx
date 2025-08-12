@@ -9,7 +9,7 @@ import { DndContext, rectIntersection, useSensors, useSensor, MouseSensor, Touch
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, useSortable, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { CSS } from '@dnd-kit/utilities';
 import { CollapsibleContent } from "@radix-ui/react-collapsible";
-import { ChevronDown, ChevronUp, FileText, GripVertical, PlusIcon, Trash2 } from "lucide-react";
+import { ChevronDown, ChevronUp, FileText, GripVertical } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";

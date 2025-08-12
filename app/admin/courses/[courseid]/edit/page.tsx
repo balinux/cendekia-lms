@@ -1,5 +1,4 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table } from "@/components/ui/table"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import AdminGetCourse from "@/app/data/admin/admin-get-course"
 import { requireAdmin } from "@/app/data/admin/require-admin"

@@ -1,6 +1,5 @@
 import { requireAdmin } from "@/app/data/admin/require-admin"
 import arcjet, { detectBot, fixedWindow } from "@/lib/arcjet"
-import { auth } from "@/lib/auth"
 import { env } from "@/lib/env"
 import { S3 } from "@/lib/s3-client"
 import { DeleteObjectCommand } from "@aws-sdk/client-s3"
@@ -51,6 +50,7 @@ export async function DELETE(req: Request) {
         await S3.send(command)
 
         return NextResponse.json({ message: "File deleted successfully" }, { status: 200 })
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return NextResponse.json({ error: "Internal server error" }, { status: 500 })
     }
