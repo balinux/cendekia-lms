@@ -12,10 +12,10 @@ interface iLessonItemProps {
     },
     slug: string,
     isActive?: boolean
+    completed: boolean
 }
 
-export default function LessonItem({ lesson, slug, isActive }: iLessonItemProps) {
-    const completed = false;
+export default function LessonItem({ lesson, slug, isActive, completed }: iLessonItemProps) {
     return (
         <Link
             href={`/dashboard/${slug}/${lesson.id}`}
