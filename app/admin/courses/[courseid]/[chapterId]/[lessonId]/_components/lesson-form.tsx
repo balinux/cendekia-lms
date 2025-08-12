@@ -24,11 +24,11 @@ import { tryCatch } from "@/hooks/try-catch";
 import { lessonSchema, LessonSchemaType } from "@/lib/zodSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { startTransition, useTransition } from "react";
+import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import UpdateLesson from "../actions";
-import { EditIcon, Loader2Icon, PlusIcon } from "lucide-react";
+import { EditIcon, Loader2Icon } from "lucide-react";
 
 interface IProps {
   lesson: AdminLessonType;

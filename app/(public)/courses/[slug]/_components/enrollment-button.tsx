@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { tryCatch } from "@/hooks/try-catch";
-import { startTransition, useTransition } from "react";
+import {  useTransition } from "react";
 import { enrollCourseAction } from "../actions";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";

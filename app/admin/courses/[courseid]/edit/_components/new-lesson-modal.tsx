@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Form, FormField, FormItem, FormLabel, FormMessage, FormDescription, FormControl } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { tryCatch } from "@/hooks/try-catch"
-import { chapterSchema, ChapterSchemaType, lessonSchema, LessonSchemaType } from "@/lib/zodSchemas"
+import { lessonSchema, LessonSchemaType } from "@/lib/zodSchemas"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader2, PlusIcon } from "lucide-react"
 import { useState, useTransition } from "react"

@@ -20,9 +20,9 @@ export const auth = betterAuth({
     },
     plugins: [
         emailOTP({
-            async sendVerificationOTP({ email, otp, type }) {
+            async sendVerificationOTP({ email, otp }) {
                 // Implement the sendVerificationOTP method to send the OTP to the user's email address
-                const { data, error } = await resend.emails.send({
+                const { error } = await resend.emails.send({
                     from: 'Cendekia <onboarding@resend.dev>',
                     to: [email],
                     subject: 'Cendekia - Verify your email',
@@ -31,6 +31,10 @@ export const auth = betterAuth({
                     <p>${otp}</p>
                     <p>Thank you for using Cendekia</p>`
                 });
+
+                if (error) {
+                    console.error("Failed to send verification email:", error);
+                }
             },
         }),
         admin()

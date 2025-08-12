@@ -48,6 +48,13 @@ export const lessonSchema = z.object({
         .optional(),
 })
 
+export const fileUploadSchema = z.object({
+    fileName: z.string().min(1, { message: "File name is required" }),
+    fileType: z.string().min(1, { message: "File type is required" }),
+    size: z.number().min(1, { message: "File size is required" }),
+    isImage: z.boolean()
+})
+
 export type CourseSchemaType = z.infer<typeof courseSchema>;
 export type ChapterSchemaType = z.infer<typeof chapterSchema>;
 export type LessonSchemaType = z.infer<typeof lessonSchema>;

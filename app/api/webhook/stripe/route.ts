@@ -18,6 +18,7 @@ export async function POST(req: Request) {
             signature,
             env.STRIPE_WEBHOOK_SECRET
         )
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return new Response("Webhook Error", {
             status: 400,
@@ -31,7 +32,9 @@ export async function POST(req: Request) {
         const customerId = session.customer as string;
 
         if (!courseId) {
-            return new Error("Course ID is not found");
+            return new Response("Course ID is not found", {
+                status: 400,
+            })
         }
 
         // check user
@@ -42,7 +45,9 @@ export async function POST(req: Request) {
         })
 
         if (!user) {
-            return new Error("User not found");
+            return new Response("User not found", {
+                status: 404,
+            })
         }
 
         // update enrollment

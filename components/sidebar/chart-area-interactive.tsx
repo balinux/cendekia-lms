@@ -1,12 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
-import { useIsMobile } from "@/hooks/use-mobile"
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardHeader,
@@ -18,39 +16,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/components/ui/toggle-group"
 
 export const description = "An interactive area chart"
-
-const dummyEnrollmentData = [
-  {
-    date: "2024-06-30",
-    enrollments: 100,
-  },
-  {
-    date: "2024-07-01",
-    enrollments: 120,
-  }, {
-    date: "2024-07-02",
-    enrollments: 110,
-  }, {
-    date: "2024-07-03",
-    enrollments: 105,
-  }, {
-    date: "2024-07-04",
-    enrollments: 108,
-  },
-]
 
 const chartConfig = {
   enrollments: {

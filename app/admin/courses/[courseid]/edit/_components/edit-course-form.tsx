@@ -4,10 +4,7 @@ import { useTransition } from "react"
 import { useRouter } from "next/navigation"
 import { tryCatch } from "@/hooks/try-catch"
 import { toast } from "sonner"
-import Link from "next/link"
-import { IconArrowLeft } from "@tabler/icons-react"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { courseCategories, courseLevels, courseSchema, CourseSchemaType, courseStatus } from "@/lib/zodSchemas"
@@ -18,7 +15,6 @@ import slugify from "slugify";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RichTextEditor } from "@/components/rich-text-editor/editor";
-import FileUploader from "@/components/file-uploader/uploader";
 import Uploader from "@/components/file-uploader/uploader";
 import { AdminCourseSingularType } from "@/app/data/admin/admin-get-course";
 import { editCourse } from "../action"

@@ -62,7 +62,7 @@ export async function editCourse(data: CourseSchemaType, courseId: string): Prom
             }
         }
 
-        const course = await prisma.course.update({
+        await prisma.course.update({
             where: {
                 id: courseId,
                 userId: session.user.id
@@ -76,6 +76,7 @@ export async function editCourse(data: CourseSchemaType, courseId: string): Prom
             status: "success",
             message: "Course updated successfully"
         }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return {
             status: "error",
@@ -122,6 +123,7 @@ export async function reOrderLesson({ chapterId, lessons, courseId }: ReOrderLes
             status: "success",
             message: "Lessons reordered successfully"
         }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return {
             status: "error",
@@ -166,6 +168,7 @@ export async function reOrderChapter({ chapters, courseId }: ReOrderChapterProps
             message: "Chapters reordered successfully"
         }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return {
             status: "error",
@@ -211,6 +214,7 @@ export async function createChapter(data: ChapterSchemaType): Promise<ApiRespons
             status: "success",
             message: "Chapter created successfully"
         }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return {
             status: "error",
@@ -259,6 +263,7 @@ export async function createLesson(data: LessonSchemaType): Promise<ApiResponse>
             status: "success",
             message: "Lesson created successfully"
         }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return {
             status: "error",
@@ -342,6 +347,7 @@ export async function deleteLesson({ lessonId, courseId, chapterId }: DeleteLess
             message: "Lesson deleted successfully"
         }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return {
             status: "error",
@@ -422,6 +428,7 @@ export async function deleteChapter({ chapterId, courseId }: DeleteChapterProps)
             message: "Chapter deleted successfully"
         }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
         return {
             status: "error",
