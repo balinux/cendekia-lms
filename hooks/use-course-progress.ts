@@ -19,7 +19,11 @@ export default function useCourseProgress({courseData}: iUseCourseProgress): Cou
         courseData.chapters.forEach((chapter) => {
             chapter.lessons.forEach((lesson) => {
                 totalLessons++;
-                if (lesson.lessonProgress.find(progress => progress.lessonId === lesson.id)?.completed) {
+
+                // check if lesson is completed
+                const isCompleted = lesson.lessonProgress.some(progress => progress.lessonId === lesson.id && progress.completed);
+                 
+                if (isCompleted) {
                     completedLessons++;
                 }
             })
